@@ -77,8 +77,29 @@
                 </div>
             </div>
 
+            <!-- Before you buy / after checkout -->
+            <div class="grid md:grid-cols-2 gap-6 mb-12">
+                <div class="bg-slate-950 border border-slate-800 rounded-xl p-6">
+                    <h3 class="font-bold mb-3">Before you buy</h3>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li>▪ Databricks workspace with Unity Catalog on AWS or Azure</li>
+                        <li>▪ Terraform &ge; 1.5 and Databricks CLI &ge; 0.240</li>
+                        <li>▪ AWS CLI v2 or Azure CLI &ge; 2.60</li>
+                        <li>▪ Unity Catalog privileges to create storage credentials, external locations and catalogs</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-xl p-6">
+                    <h3 class="font-bold mb-3">What happens after checkout</h3>
+                    <ol class="space-y-2 text-sm text-slate-400 list-decimal list-inside">
+                        <li>A private repository invite is sent to the GitHub username you enter below</li>
+                        <li>Accept it from your GitHub notifications or email</li>
+                        <li>Copy the code into your own private repository and follow the README runbook</li>
+                    </ol>
+                </div>
+            </div>
+
             <!-- Transaction Node -->
-            <div class="bg-slate-950 p-6 rounded-xl border border-slate-800 text-center">
+            <div id="checkout" class="bg-slate-950 p-6 rounded-xl border border-slate-800 text-center scroll-mt-8">
                 <div class="text-4xl font-black mb-2">$1,499</div>
                 <div class="text-sm text-slate-500 mb-6">One-time payment. No recurring fees.</div>
                 
@@ -86,6 +107,7 @@
                 <div class="mb-6 text-left relative">
                     <label for="github-handle" class="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">GitHub Username (For Delivery)</label>
                     <input type="text" id="github-handle" placeholder="e.g., octocat" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-slate-100 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition" required>
+                    <p class="text-slate-500 text-xs mt-2">The repository invite goes to this account, so check the spelling.</p>
                     <p id="github-error" class="hidden text-red-400 text-xs mt-2 font-medium"></p>
                 </div>
 
@@ -96,7 +118,8 @@
                     Secure Direct Checkout
                 </button>
                 <!-- Digital Marketing: Risk Reversal Copy -->
-                <p class="text-xs text-slate-500 mt-4">Instant repository access via GitHub. Protected by 256-bit SSL encryption.</p>
+                <p class="text-xs text-slate-500 mt-4">Automated GitHub repository invite after payment. Protected by 256-bit SSL encryption.</p>
+                <p class="text-xs text-slate-500 mt-2">By purchasing you agree to the <a href="/legal/eula" class="text-teal-400 hover:text-teal-300">EULA</a> and <a href="/legal/refund" class="text-teal-400 hover:text-teal-300">Refund Policy</a>.</p>
             </div>
 
             <!-- Defensive Initialization Logic -->
@@ -137,6 +160,8 @@
                     });
                 }
             </script>
+        </div>
+    </main>
 
     <!-- Compliance-Fortified Footer -->
     <footer class="border-t border-slate-900 max-w-4xl mx-auto px-6 py-12 text-xs text-slate-500 mt-12">
