@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kairos Data Systems | Universal Lakehouse Factory</title>
     <meta name="description" content="Kairos Data Systems: production-grade Databricks Medallion pipelines and Terraform state backends on AWS and Azure.">
+    <!-- Link previews (LinkedIn, Slack) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://datasystems.kairoscc.io/">
+    <meta property="og:title" content="Kairos Data Systems | Lakehouse Factory for Databricks">
+    <meta property="og:description" content="Terraform + Databricks Asset Bundles for a Bronze/Silver/Gold lakehouse on AWS or Azure. One-time purchase, delivered as a private GitHub repo.">
+    <meta name="twitter:card" content="summary">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased">
@@ -16,10 +22,42 @@
         <h1 class="text-5xl md:text-6xl font-black tracking-tight bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent mb-6">
             THE UNIVERSAL LAKEHOUSE FACTORY
         </h1>
-        <p class="text-xl text-slate-400 max-w-3xl mx-auto mb-10">
-            Stop copy-pasting monolithic infrastructure. Instantly generate production-grade Databricks Medallion pipelines and remote state backends on AWS and Azure, with GCP on the roadmap.
+        <p class="text-xl text-slate-400 max-w-3xl mx-auto mb-6">
+            Stop rebuilding the same Databricks plumbing on every project. Go from an empty cloud account to a deployed Bronze &rarr; Silver &rarr; Gold pipeline with dev, staging and prod targets, using Terraform and Databricks Asset Bundles you own.
         </p>
+        <div class="flex flex-wrap justify-center gap-2 text-xs font-semibold text-slate-300 mb-10">
+            <span class="bg-slate-900 border border-slate-800 rounded-full px-3 py-1">AWS + Azure today</span>
+            <span class="bg-slate-900 border border-slate-800 rounded-full px-3 py-1">GCP on the roadmap</span>
+            <span class="bg-slate-900 border border-slate-800 rounded-full px-3 py-1">One-time purchase</span>
+            <span class="bg-slate-900 border border-slate-800 rounded-full px-3 py-1">Delivered as a private GitHub repo</span>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/small-team/#checkout" class="bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold px-8 py-4 rounded-xl transition">Get the Small Team Edition &middot; $1,499</a>
+            <a href="#inside" class="border border-slate-700 hover:border-teal-500 text-slate-200 font-semibold px-8 py-4 rounded-xl transition">See what's inside</a>
+        </div>
     </header>
+
+    <!-- Who it's for -->
+    <section class="max-w-4xl mx-auto px-6 pb-16">
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+                <h2 class="text-lg font-bold mb-4 text-teal-400">Built for</h2>
+                <ul class="space-y-3 text-sm text-slate-300">
+                    <li>✓ Data teams standing up Databricks on AWS or Azure for the first time</li>
+                    <li>✓ Platform leads who want Unity Catalog, IAM and remote state done right on day one</li>
+                    <li>✓ Consultants who deploy the same foundation for client after client</li>
+                </ul>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
+                <h2 class="text-lg font-bold mb-4 text-slate-400">Not for</h2>
+                <ul class="space-y-3 text-sm text-slate-400">
+                    <li>✗ Teams on GCP today</li>
+                    <li>✗ Anyone looking for a managed service or hosted platform</li>
+                    <li>✗ Teams without Terraform or Databricks CLI access in their cloud account</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
     <!-- Technical Differentiator Section -->
     <section class="max-w-4xl mx-auto px-6 pb-16">
@@ -46,6 +84,29 @@
                 </li>
             </ul>
         </div>
+    </section>
+
+    <!-- What's inside: repository tree -->
+    <section id="inside" class="max-w-4xl mx-auto px-6 pb-16 scroll-mt-8">
+        <h2 class="text-2xl font-bold mb-6 text-center">What's in the repository</h2>
+        <pre class="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-xs md:text-sm text-slate-300 font-mono overflow-x-auto leading-relaxed"><span class="text-teal-400">lakehouse-small-team/</span>
+├── init.sh                      <span class="text-slate-500"># generates your project and its dev / staging / prod targets</span>
+├── <span class="text-teal-400">core/dabs/</span>                   <span class="text-slate-500"># cloud-agnostic Databricks Asset Bundle</span>
+│   ├── databricks.yml           <span class="text-slate-500"># schema, landing volume, serverless DLT pipeline, demo job</span>
+│   └── src/
+│       ├── bronze_to_silver.py  <span class="text-slate-500"># Autoloader ingestion, expectations, dedup</span>
+│       ├── silver_to_gold.py    <span class="text-slate-500"># daily aggregates</span>
+│       └── generate_demo_data.py
+├── <span class="text-teal-400">providers/aws/</span>
+│   ├── bootstrap/               <span class="text-slate-500"># S3 state bucket + DynamoDB lock table</span>
+│   ├── medallion-s3/            <span class="text-slate-500"># Bronze / Silver / Gold buckets</span>
+│   ├── iam-roles/               <span class="text-slate-500"># Databricks cross-account and Unity Catalog trust</span>
+│   └── unity-catalog/           <span class="text-slate-500"># storage credential, external locations, catalogs</span>
+├── <span class="text-teal-400">providers/azure/</span>
+│   ├── bootstrap/               <span class="text-slate-500"># state storage account with blob-lease locking</span>
+│   └── lakehouse/               <span class="text-slate-500"># ADLS Gen2, Access Connector, Unity Catalog</span>
+├── .github/workflows/deploy.yml <span class="text-slate-500"># validate on PR, staging on main, gated prod</span>
+└── README.md                    <span class="text-slate-500"># step-by-step runbook and troubleshooting</span></pre>
     </section>
 
     <!-- SOP Section -->
@@ -80,8 +141,9 @@
                     <span class="text-xs font-bold uppercase tracking-widest text-teal-400">Solo Architect</span>
                     <h2 class="text-2xl font-bold mt-2 mb-4">Developer</h2>
                     <div class="text-4xl font-black mb-6">$499.99 <span class="text-sm font-normal text-slate-500">one-time</span></div>
+                    <p class="text-slate-400 text-sm">Single-developer license. Not on sale yet.</p>
                 </div>
-                <button disabled class="block w-full text-center bg-slate-800 font-medium py-3 rounded-xl mt-8 cursor-not-allowed">Coming Soon</button>
+                <a href="mailto:info@kairoscc.io?subject=Developer%20tier%20waitlist" class="block w-full text-center bg-slate-800 hover:bg-slate-700 font-medium py-3 rounded-xl mt-8 transition">Coming Soon &middot; Join the waitlist</a>
             </div>
 
             <!-- Small Team Tier -->
@@ -99,7 +161,8 @@
                         <li class="flex items-center">✓ Multi-User Collaborative License</li>
                     </ul>
                 </div>
-                <a href="/small-team/" class="block w-full text-center bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold py-3 rounded-xl mt-8 transition">View Specifications</a>
+                <a href="/small-team/#checkout" class="block w-full text-center bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold py-3 rounded-xl mt-8 transition">Buy now &middot; $1,499</a>
+                <a href="/small-team/" class="block w-full text-center text-sm text-slate-400 hover:text-teal-400 mt-3 transition">Full specification</a>
             </div>
 
             <!-- Enterprise Tier -->
@@ -108,12 +171,40 @@
                     <span class="text-xs font-bold uppercase tracking-widest text-teal-400">Scale & Compliance</span>
                     <h2 class="text-2xl font-bold mt-2 mb-4">Enterprise</h2>
                     <div class="text-4xl font-black mb-6">$4,999 <span class="text-sm font-normal text-slate-500">one-time</span></div>
+                    <p class="text-slate-400 text-sm">Not on sale yet.</p>
                 </div>
-                <button disabled class="block w-full text-center bg-slate-800 font-medium py-3 rounded-xl mt-8 cursor-not-allowed">Coming Soon</button>
+                <a href="mailto:info@kairoscc.io?subject=Enterprise%20tier%20waitlist" class="block w-full text-center bg-slate-800 hover:bg-slate-700 font-medium py-3 rounded-xl mt-8 transition">Coming Soon &middot; Join the waitlist</a>
             </div>
 
         </div>
     </main>
+
+    <!-- FAQ -->
+    <section class="max-w-3xl mx-auto px-6 pb-24">
+        <h2 class="text-2xl font-bold mb-8 text-center">Questions</h2>
+        <div class="space-y-3">
+            <details class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+                <summary class="font-semibold cursor-pointer">How is it delivered?</summary>
+                <p class="text-sm text-slate-400 mt-3">You enter your GitHub username at checkout. After payment, an invitation to the private repository is sent to that account automatically. Accept it from your GitHub notifications or email, then clone the repository.</p>
+            </details>
+            <details class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+                <summary class="font-semibold cursor-pointer">What do I need before I start?</summary>
+                <p class="text-sm text-slate-400 mt-3">A Databricks workspace with Unity Catalog on AWS or Azure, Terraform 1.5 or later, Databricks CLI 0.240 or later, and the AWS CLI v2 or Azure CLI 2.60 or later. Creating the storage credential, external locations and catalogs needs the matching Unity Catalog privileges on your metastore.</p>
+            </details>
+            <details class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+                <summary class="font-semibold cursor-pointer">Who can use the Small Team license?</summary>
+                <p class="text-sm text-slate-400 mt-3">Everyone in the purchasing team or organization, for internal use, including single-tenant client environments you manage directly. You can't publish, resell or repackage the code. See the <a href="/legal/eula" class="text-teal-400 hover:text-teal-300">EULA</a>.</p>
+            </details>
+            <details class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+                <summary class="font-semibold cursor-pointer">What's your refund policy?</summary>
+                <p class="text-sm text-slate-400 mt-3">See the <a href="/legal/refund" class="text-teal-400 hover:text-teal-300">Refund Policy</a> before you buy.</p>
+            </details>
+            <details class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+                <summary class="font-semibold cursor-pointer">How do I get help?</summary>
+                <p class="text-sm text-slate-400 mt-3">Email <a href="mailto:info@kairoscc.io" class="text-teal-400 hover:text-teal-300">info@kairoscc.io</a>. The README also includes runbooks for state lock deadlocks, Azure role propagation and CLI version issues.</p>
+            </details>
+        </div>
+    </section>
 
     <!-- Compliance-Fortified Footer -->
     <footer class="border-t border-slate-900 max-w-6xl mx-auto px-6 py-12 text-xs text-slate-500">
