@@ -24,6 +24,13 @@
     -->
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Launch offer: shows until LAUNCH_END, then the page falls back to regular pricing on its own -->
+    <style>.launch-on{display:none}html.launch .launch-on{display:revert}html.launch .launch-off{display:none}</style>
+    <script>
+        window.KAIROS_LAUNCH = { code: 'LAUNCH2026', end: Date.parse('2026-12-02T07:59:59Z') }; // Dec 1, 11:59:59 PM PT
+        window.KAIROS_LAUNCH.active = Date.now() < window.KAIROS_LAUNCH.end;
+        if (window.KAIROS_LAUNCH.active) document.documentElement.classList.add('launch');
+    </script>
     
     <!-- Paddle.js Integration (Production) -->
     <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
@@ -100,7 +107,8 @@
 
             <!-- Transaction Node -->
             <div id="checkout" class="bg-slate-950 p-6 rounded-xl border border-slate-800 text-center scroll-mt-8">
-                <div class="text-4xl font-black mb-2">$1,499</div>
+                <div class="launch-off"><div class="text-4xl font-black mb-2">$1,499</div></div>
+                <div class="launch-on"><div class="text-xs font-bold uppercase tracking-widest text-teal-400 mb-2">Launch price &middot; through Dec 1, 11:59 PM PT</div><div class="text-4xl font-black mb-1">$999</div><div class="text-sm text-slate-400 mb-2">$1,499 after the launch window. Applied automatically at checkout.</div></div>
                 <div class="text-sm text-slate-500 mb-6">One-time payment. No recurring fees.</div>
                 
                 <!-- GitHub Handle Capture with Validation UI -->
@@ -152,12 +160,17 @@
                     }
 
                     // Production Payload Execution
-                    Paddle.Checkout.open({ 
+                    const checkout = {
                         items: [{ priceId: 'pri_01m4bx2sef2qb109ecyvjhfbkh', quantity: 1 }],
                         customData: {
                             github_username: githubHandle
                         }
-                    });
+                    };
+                    // Launch offer: Paddle discount code applied automatically until the window closes
+                    if (window.KAIROS_LAUNCH && Date.now() < window.KAIROS_LAUNCH.end) {
+                        checkout.discountCode = window.KAIROS_LAUNCH.code;
+                    }
+                    Paddle.Checkout.open(checkout);
                 }
             </script>
         </div>

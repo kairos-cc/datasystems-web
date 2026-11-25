@@ -12,8 +12,16 @@
     <meta property="og:description" content="Terraform + Databricks Asset Bundles for a Bronze/Silver/Gold lakehouse on AWS or Azure. One-time purchase, delivered as a private GitHub repo.">
     <meta name="twitter:card" content="summary">
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Launch offer: shows until LAUNCH_END, then the page falls back to regular pricing on its own -->
+    <style>.launch-on{display:none}html.launch .launch-on{display:revert}html.launch .launch-off{display:none}</style>
+    <script>
+        window.KAIROS_LAUNCH = { code: 'LAUNCH2026', end: Date.parse('2026-12-02T07:59:59Z') }; // Dec 1, 11:59:59 PM PT
+        window.KAIROS_LAUNCH.active = Date.now() < window.KAIROS_LAUNCH.end;
+        if (window.KAIROS_LAUNCH.active) document.documentElement.classList.add('launch');
+    </script>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased">
+    <div class="launch-on"><a href="/small-team/#checkout" class="block bg-teal-500 hover:bg-teal-400 text-slate-950 text-sm font-bold text-center px-6 py-2 transition">Launch offer: Small Team Edition $999 (then $1,499) &middot; through Dec 1, 11:59 PM PT &middot; applied at checkout &rarr;</a></div>
 
 
     <!-- Hero Section -->
@@ -32,7 +40,7 @@
             <span class="bg-slate-900 border border-slate-800 rounded-full px-3 py-1">Delivered as a private GitHub repo</span>
         </div>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/small-team/#checkout" class="bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold px-8 py-4 rounded-xl transition">Get the Small Team Edition &middot; $1,499</a>
+            <a href="/small-team/#checkout" class="bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold px-8 py-4 rounded-xl transition">Get the Small Team Edition &middot; <span class="launch-off">$1,499</span><span class="launch-on">$999 launch price</span></a>
             <a href="#inside" class="border border-slate-700 hover:border-teal-500 text-slate-200 font-semibold px-8 py-4 rounded-xl transition">See what's inside</a>
         </div>
     </header>
@@ -148,12 +156,13 @@
 
             <!-- Small Team Tier -->
             <div class="bg-slate-900 border-2 border-teal-500/50 rounded-2xl p-8 flex flex-col justify-between shadow-xl relative scale-105">
-                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-teal-500 text-slate-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Available Now</div>
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-teal-500 text-slate-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider"><span class="launch-off">Available Now</span><span class="launch-on">Launch Price</span></div>
                 <div>
                     <span class="text-xs font-bold uppercase tracking-widest text-teal-400">Collaboration</span>
                     <h2 class="text-2xl font-bold mt-2 mb-4">Factory Scaffolding</h2>
                     <p class="text-slate-400 text-sm mb-6">Engineered for growing teams standing up Databricks on AWS or Azure with collaborative workflows.</p>
-                    <div class="text-4xl font-black mb-6">$1,499 <span class="text-sm font-normal text-slate-500">one-time</span></div>
+                    <div class="launch-off"><div class="text-4xl font-black mb-6">$1,499 <span class="text-sm font-normal text-slate-500">one-time</span></div></div>
+                    <div class="launch-on"><div class="text-4xl font-black mb-1">$999 <span class="text-sm font-normal text-slate-500">one-time</span></div><div class="text-xs text-teal-400 font-bold mb-6">Launch price through Dec 1 &middot; $1,499 after</div></div>
                     <ul class="space-y-3 text-sm text-slate-300 border-t border-slate-800 pt-6">
                         <li class="flex items-center">✓ Turnkey Medallion Architecture</li>
                         <li class="flex items-center">✓ Production-Grade DAB Blueprints</li>
@@ -161,7 +170,7 @@
                         <li class="flex items-center">✓ Multi-User Collaborative License</li>
                     </ul>
                 </div>
-                <a href="/small-team/#checkout" class="block w-full text-center bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold py-3 rounded-xl mt-8 transition">Buy now &middot; $1,499</a>
+                <a href="/small-team/#checkout" class="block w-full text-center bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold py-3 rounded-xl mt-8 transition">Buy now &middot; <span class="launch-off">$1,499</span><span class="launch-on">$999</span></a>
                 <a href="/small-team/" class="block w-full text-center text-sm text-slate-400 hover:text-teal-400 mt-3 transition">Full specification</a>
             </div>
 
