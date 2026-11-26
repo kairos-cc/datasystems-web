@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google Analytics 4 (no ad features; EEA/UK/CH default to cookieless) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KBTWJ4Y45"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+            region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'] });
+        gtag('consent', 'default', { analytics_storage: 'granted', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+        gtag('js', new Date());
+        gtag('config', 'G-0KBTWJ4Y45', { allow_google_signals: false, allow_ad_personalization_signals: false });
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy | Kairos Data Systems</title>
@@ -17,12 +28,16 @@
             <span class="text-xs font-bold uppercase tracking-widest text-teal-400">Compliance & Terms</span>
             <h1 class="text-4xl font-black mt-2 mb-8">Privacy Policy</h1>
             <div class="prose prose-invert prose-slate max-w-none text-sm text-slate-300 space-y-6">
-                <p><strong>Last Updated: August 2026</strong></p>
+                <p><strong>Last Updated: November 2026</strong></p>
                 <p>Kairos Consulting Collective, LLC ("we," "us," or "our") respects your privacy. This policy explains how we collect, use, and route your data when you purchase our products.</p>
                 <h3 class="text-lg font-bold text-slate-100 mt-6">Data Collection & Merchant of Record</h3>
                 <p>Our order process is conducted by our online reseller Paddle.com. Paddle.com is the Merchant of Record for all our orders. Paddle provides all customer service inquiries and handles returns. Your payment data is collected securely by Paddle; we do not store or process your credit card information on our servers.</p>
                 <h3 class="text-lg font-bold text-slate-100 mt-6">Third-Party Data Routing (Fulfillment Architecture)</h3>
-                <p>To fulfill your purchase, your email address is securely transmitted from Paddle via webhook to Make.com. Make.com acts as our automated integration layer, which then authenticates with the GitHub REST API to securely invite your email address as an outside collaborator to our private scaffolding repository. By making a purchase, you consent to this specific data routing solely for the purpose of product fulfillment.</p>
+                <p>To fulfill your purchase, your email address and the GitHub username you enter at checkout are securely transmitted from Paddle via webhook to Make.com. Make.com acts as our automated integration layer, which then authenticates with the GitHub REST API to invite that GitHub account as an outside collaborator to our private repository. By making a purchase, you consent to this specific data routing solely for the purpose of product fulfillment.</p>
+                <h3 class="text-lg font-bold text-slate-100 mt-6">Website Analytics</h3>
+                <p>We use Google Analytics on datasystems.kairoscc.io and kairoscc.io to understand how visitors find and use our sites, such as pages viewed, approximate location, device and browser type, referring site, and whether a checkout was started or completed (including order value and any discount code). Google Analytics uses cookies and similar technologies to collect this information. We do not send your name, email address, payment details or GitHub username to Google Analytics.</p>
+                <p>We have turned off Google Analytics advertising features (Google Signals and ad personalization), and we do not sell or share your personal information for cross-context behavioral advertising. Visitors from the European Economic Area, the United Kingdom and Switzerland are measured without analytics cookies by default.</p>
+                <p>You can block analytics cookies in your browser settings or opt out of Google Analytics with Google's browser add-on at tools.google.com/dlpage/gaoptout. Google's use of this data is described at policies.google.com/privacy. For questions or requests about your data, including requests under the California Consumer Privacy Act, email info@kairoscc.io.</p>
             </div>
         </div>
     </main>
